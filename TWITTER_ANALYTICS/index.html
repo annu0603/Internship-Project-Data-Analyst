@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TwitterAnalytics</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: #1DA1F2; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: white;
+      font-size: 1.5rem;
+    }
+    .nav-link {
+      color: white;
+      font-size: 1.5rem;
+    }
+    .nav-link:hover {
+      color: #042032; 
+    }
+    .hero-text h1{
+      font-size: 3.5rem;
+    }
+    
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Function to check if the current time is within a given time range
+      function isWithinTimeRange(startHour, startMinute, endHour, endMinute) {
+          const now = new Date();
+          const startTime = startHour * 60 + startMinute;
+          const endTime = endHour * 60 + endMinute;
+          const currentTime = now.getHours() * 60 + now.getMinutes();
+  
+          return currentTime >= startTime && currentTime <= endTime;
+      }
+  
+      // Function to toggle report visibility based on time
+      function toggleReportVisibility() {
+          // Task 1
+          const report1Iframe = document.querySelector('#report1 iframe');
+          const report1Message = document.getElementById('report1-message');
+          if (isWithinTimeRange(15, 0, 17, 0)) {
+              if (report1Iframe) report1Iframe.style.display = 'block';
+              if (report1Message) report1Message.style.display = 'none';
+          } else {
+              if (report1Iframe) report1Iframe.style.display = 'none';
+              if (report1Message) report1Message.style.display = 'block';
+          }
+  
+          // Task 2
+          const report2Iframe = document.querySelector('#report2 iframe');
+          const report2Message = document.getElementById('report2-message');
+          if (isWithinTimeRange(15, 0, 17, 0)) {
+              if (report2Iframe) report2Iframe.style.display = 'block';
+              if (report2Message) report2Message.style.display = 'none';
+          } else {
+              if (report2Iframe) report2Iframe.style.display = 'none';
+              if (report2Message) report2Message.style.display = 'block';
+          }
+  
+          // Task 3
+          const report3Iframe = document.querySelector('#report3 iframe');
+          const report3Message = document.getElementById('report3-message');
+          if (isWithinTimeRange(15, 0, 17, 0) || isWithinTimeRange(7, 0, 11, 0)) {
+              if (report3Iframe) report3Iframe.style.display = 'block';
+              if (report3Message) report3Message.style.display = 'none';
+          } else {
+              if (report3Iframe) report3Iframe.style.display = 'none';
+              if (report3Message) report3Message.style.display = 'block';
+          }
+      }
+  
+      toggleReportVisibility();
+      setInterval(toggleReportVisibility, 10000);
+    });  
+  </script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">TWITTER</a>
+
+      <!-- Toggle button for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!-- Left side - Text -->
+        <div class="col-lg-6 col-md-12 text-lg-start text-center">
+          <div class="hero-text">
+            <h1>Twitter
+            Analytics</h1>
+            <h1>Dashboard</h1>
+            <p>Analyze your Twitter data with reports to track engagement, audience growth, and trends.</p>
+          </div>
+        </div>
+
+        <!-- Right side - Image -->
+        <div class="col-lg-6 col-md-12 hero-image">
+          <img src="images/img1.png" alt="Twitter Analytics Dashboard">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card Section (PowerBI Embed) -->
+  <section id="report" class="powerbi-section">
+    <iframe title="cards" width="100%" height="420" src="https://app.powerbi.com/view?r=eyJrIjoiZTk0MjNhMGItMWRhOC00NTFkLTk3NjMtZjkxOGI1NjFkNjVmIiwidCI6ImY2OTY0OTkwLTFjZWUtNGI5NC05OGEyLTBhZjMwNGQ1OTYyNSJ9" frameborder="0" allowFullScreen="true"></iframe>
+  </section>
+
+  <!-- Task1 Section -->
+  <section id="report1" class="task1">
+    <div class="container">
+      <div class="row">
+        <!-- Power BI Report -->
+        <div class="col-md-6">
+          <iframe id="report1-chart" title="PowerBI Report" width="100%" height="400" 
+                  src="https://app.powerbi.com/view?r=eyJrIjoiM2ZlNGYxMTgtM2ZjNi00MWFkLWFjNzEtYTczMzY3MWU4NTM4IiwidCI6ImY2OTY0OTkwLTFjZWUtNGI5NC05OGEyLTBhZjMwNGQ1OTYyNSJ9"  
+                  frameborder="0" allowFullScreen="true"></iframe>
+            <!-- Visibility Message -->
+          <div id="report1-message">
+            This chart will be visible only from 3 PM to 5 PM IST.
+          </div>
+        </div>
+        <div class="col-md-6 text-box">
+          <h2>Top 10% Engaged Tweets </h2>
+          <p>
+            "This chart displays the top 10% of tweets with the highest engagement rates, filtered by tweets that have received more than 50 likes, are posted on weekdays, and have a character count of fewer than 30. Additionally, this chart only displays tweets posted between 3 PM and 5 PM IST."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Task1 Section -->
+
+  <!-- Task2 Section -->
+  <section id="report2" class="task2">
+    <div class="container">
+      <div class="row">
+        <!-- Text Section-->
+        <div class="col-md-6 text-box">
+          <h2>Top 10 Tweets by Engagement</h2>
+          <p>
+            "This chart displays the top 10 tweets with the highest engagement (sum of retweets and likes), filtered by tweets posted on weekdays, with impressions as an even number, and posted on odd-numbered dates. Additionally, it only shows tweets with fewer than 30 words and is displayed between 3 PM and 5 PM IST."
+          </p>
+        </div>
+        <!-- Power BI Report on right) -->
+        <div class="col-md-6">
+          <iframe id="report2-chart" title="PowerBI Report" 
+                  src="https://app.powerbi.com/view?r=eyJrIjoiMTg3ZWUyZWUtZjRjNy00YTQ3LWExMzYtMDhkYTM1YjY2ZTJlIiwidCI6ImY2OTY0OTkwLTFjZWUtNGI5NC05OGEyLTBhZjMwNGQ1OTYyNSJ9"   
+                  frameborder="0" allowFullScreen="true"></iframe>
+          <!-- Message -->
+          <div id="report2-message">
+            This chart will be visible only from 3 PM to 5 PM IST.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Task1 Section -->
+
+  <!-- Task3 Section -->
+  <section id="report3" class="task3">
+    <div class="container">
+      <div class="row">
+        <!-- Power BI Report -->
+        <div class="col-md-6">
+          <iframe id="report3-chart" title="PowerBI Report" width="100%" height="400" 
+                  src="https://app.powerbi.com/view?r=eyJrIjoiNjE4NmIxZmMtOTU1MS00OThkLWFiZDItMTg2NzgxZjk0MWQ0IiwidCI6ImY2OTY0OTkwLTFjZWUtNGI5NC05OGEyLTBhZjMwNGQ1OTYyNSJ9" 
+                  frameborder="0" allowFullScreen="true"></iframe>
+           <!-- Visibility Message -->
+           <div id="report3-message">
+            This chart will be visible only from 3 PM to 5 PM IST and 7 AM to 11 AM.
+          </div>
+        </div>
+        <!-- Text Section -->
+        <div class="col-md-6 text-box">
+          <h2>Average Engagement Trend (Media vs No Media)</h2>
+          <p>
+            "This line chart shows the average engagement rate trend for each month, with separate lines for tweets with and without media content. The chart is visible only between 3 PM to 5 PM IST and 7 AM to 11 AM IST, and includes tweets with even-numbered engagement, posted on odd-numbered dates, containing fewer than 20 characters, and excluding words with the letter 'C'."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Task3 Section -->
+
+  <!-- Footer Section -->
+  <footer class="footer text-white py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Column 1: Info -->
+        <div class="col-md-4 mb-3">
+          <h5>TWITTER ANALYTICS</h5>
+          <p>Get insights from the top tweets with the highest engagement. Analyze the data and boost your engagement strategies.</p>
+        </div>
+        <!-- Column 2: Quick Links -->
+        <div class="col-md-4 mb-3">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white">Home</a></li>
+            <li><a href="Dashboard.html" class="text-white">Dashboard</a></li>
+          </ul>
+        </div>
+        <!-- Column 3: Social Media -->
+        <div class="col-md-4 mb-3">
+          <h5>Follow Us</h5>
+          <ul class="list-unstyled d-flex">
+            <li class="mr-3"><a href="#" class="text-white"><i class="fab fa-twitter fa-2x"></i></a></li>
+            <li class="mr-3"><a href="#" class="text-white"><i class="fab fa-facebook fa-2x"></i></a></li>
+            <li class="mr-3"><a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a></li>
+            <li class="mr-3"><a href="#" class="text-white"><i class="fab fa-linkedin fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4">
+      <!-- Bottom Footer -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <p>&copy; 2025 Twitter Analytics. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer Section -->
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
